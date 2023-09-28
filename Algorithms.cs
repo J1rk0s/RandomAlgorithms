@@ -1,6 +1,10 @@
-﻿namespace RandomAlgos;
+﻿using System.Text;
+
+namespace RandomAlgos;
 
 public class Algorithms {
+    private static long _seed = 0;
+
     public bool LuhnValidation(string cardNum) {
         List<char> cardSplit = new(cardNum);
 
@@ -32,5 +36,33 @@ public class Algorithms {
         }
 
         return res % 10 == 0;
+    }
+
+    public static long XorShift(long seed) {
+        if (seed < 0) {
+            throw new ArgumentOutOfRangeException("Seed cannot be less or equal to zero!");
+        }
+
+        seed ^= (seed << 13);
+        seed ^= (seed >> 8);
+        seed ^= (seed << 22);
+
+        long absSeed = Math.Abs(seed);
+        _seed = seed;
+
+        return absSeed;
+    }
+
+    public static string PascalCaseToSnakeCase(string str) {
+        StringBuilder builder = new StringBuilder(str);
+
+        for (int i = 0; i < builder.Length; i++) {
+            if (char.IsUpper(builder[i]) && i != 0) {
+                builder.Insert(i, "_");
+                i += 2;
+            }
+        }
+
+        return builder.ToString().ToLower();
     }
 }
