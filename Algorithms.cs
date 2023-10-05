@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 
 namespace RandomAlgos;
 
@@ -64,5 +64,15 @@ public class Algorithms {
         }
 
         return builder.ToString().ToLower();
+    }
+
+    public static int SumDigits(int number) {
+        int sum = 0;
+        while(number > 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+
+        return sum;
     }
 }
