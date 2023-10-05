@@ -5,7 +5,7 @@ namespace RandomAlgos;
 public class Algorithms {
     private static long _seed = 0;
 
-    public bool LuhnValidation(string cardNum) {
+    public static bool LuhnValidation(string cardNum) {
         List<char> cardSplit = new(cardNum);
 
         if (cardSplit.Count % 2 == 0) {
